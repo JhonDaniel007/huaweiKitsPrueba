@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">KitsHuaweiPrueba</string>
+    <string name="title_activity_inicio">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">carta</string>
+    <string name="title_notifications">Ubicación</string>
+    <string name="cerrar_sesion">Cerrar Sesion</string>
+    <string name="cerra_sesion">Cerra Sesión</string>
+    <string name="comprar_plato">Comprar plato</string>
+    <string name="nombre_del_plato">nombre del plato</string>
+    <string name="email">Email</string>
+    <string name="password">Contraseña</string>
+    <string name="signin">Sign In</string>
+    <string name="olvide_contrasenia">Olvide mi contraseña</string>
+    <string name="registrarse">Registrarme</string>
+    <string name="name">Nombres</string>
+    <string name="last_name">Apellidos</string>
+    <string name="age">Edad</string>
+    <string name="confirm_password">Confirmar Contraseña</string>
+</resources>
