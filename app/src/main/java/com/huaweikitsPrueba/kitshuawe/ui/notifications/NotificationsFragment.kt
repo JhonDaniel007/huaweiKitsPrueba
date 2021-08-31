@@ -21,11 +21,10 @@ import com.huawei.hms.maps.model.MarkerOptions
 import com.huaweikitsPrueba.kitshuawe.databinding.FragmentNotificationsBinding
 
 
-class NotificationsFragment : Fragment(),OnMapReadyCallback {
+class NotificationsFragment : Fragment(){
 
     private lateinit var notificationsViewModel: NotificationsViewModel
     private var _binding: FragmentNotificationsBinding? = null
-    lateinit var huaweiMap: HuaweiMap
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -42,7 +41,6 @@ class NotificationsFragment : Fragment(),OnMapReadyCallback {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-
         return root
     }
 
@@ -54,32 +52,10 @@ class NotificationsFragment : Fragment(),OnMapReadyCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-            binding.idMapView.onCreate(null)
-            binding.idMapView.getMapAsync(this)
+
 
     }
 
-    override fun onMapReady(p0: HuaweiMap?) {
-        Log.d("TAG", "mapa listo")
-        if (p0!=null){
-            huaweiMap=p0
-            huaweiMap.isMyLocationEnabled = false
-            val coordenadas=LatLng(2.4826211,-76.5620209)
-            var algo= huaweiMap.addMarker(
-                MarkerOptions().position(coordenadas)
-                    .title("Sena CTPI")
-            )
-
-            Toast.makeText(requireContext(), "Algo $algo", Toast.LENGTH_LONG).show()
-            huaweiMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(2.4826211,-76.5620209), 10f))
-            huaweiMap.uiSettings.isMyLocationButtonEnabled = true
-            huaweiMap.uiSettings.isZoomGesturesEnabled = true
-            huaweiMap.uiSettings.isScrollGesturesEnabled = true
-            huaweiMap.uiSettings.isTiltGesturesEnabled = true
-            huaweiMap.uiSettings.isRotateGesturesEnabled = true
-
-        }
-    }
 
 
 }

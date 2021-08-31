@@ -20,12 +20,11 @@ import java.util.ArrayList
 
 class QueryUser private constructor() {
 
-
-
     companion object{
 
         const val KEY_SESSION="SESSION"
         const val KEY_EMAIl="EMAIL"
+
         fun getDatabase(context: Context): DBConfig {
             return Room.databaseBuilder(context,
                 DBConfig::class.java,
@@ -53,11 +52,8 @@ class QueryUser private constructor() {
                     if(email==user.email && password==user.password){
                         setSession(true,email,context)
                         coincidencia=true
-
                     }
-
             }
-
             Log.d("COINCIDENCIAS","$coincidencia")
             return coincidencia
 
@@ -95,32 +91,28 @@ class QueryUser private constructor() {
             return activa
         }
 
-        fun setSession(session:Boolean,email: String,context: Context){
-            val preferences= getSharePref(context)
+        fun setSession(session:Boolean,email: String,context: Context) {
+            val preferences = getSharePref(context)
             preferences.edit {
-                this.putBoolean(KEY_SESSION,session)
-                this.putString(KEY_EMAIl,email)
+                this.putBoolean(KEY_SESSION, session)
+                this.putString(KEY_EMAIl, email)
                 commit()
             }
         }
-
         fun getCurrentUSer(context: Context):User?{
             val bd= getDatabase(context)
             val preferences= getSharePref(context)
             var user:User?=null
-
             runBlocking {
                 launch(Dispatchers.IO) {
                     val email=preferences.getString(KEY_EMAIl,null)
-                     user= email?.let { bd.userDao().selectUserByEmail(it) }
+                     user= email?.let {
+                         bd.userDao().selectUserByEmail(it)
+                     }
                 }
-
             }
             Log.d("USERNAME","${user?.name}")
             return user
         }
-
-
     }
-
 }

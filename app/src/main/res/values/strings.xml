@@ -17,4 +17,6 @@
     <string name="last_name">Apellidos</string>
     <string name="age">Edad</string>
     <string name="confirm_password">Confirmar Contraseña</string>
+    <string name="channel_name">Cannal1</string>
+    <string name="channel_description">Channel description</string>
 </resources>

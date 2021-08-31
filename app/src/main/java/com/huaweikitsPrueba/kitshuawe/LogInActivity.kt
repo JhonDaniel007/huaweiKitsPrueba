@@ -45,33 +45,26 @@ class LogInActivity : AppCompatActivity() {
             if(!validarEmail(email,binding.txtLayoutUserEmail))
                 return
 
-
             if(pass != confirmPass){
                 binding.txtLayoutUserConfirmPass.error="Las contraseñas no coinciden"
                 return
             }
-
             val user=User(name=name,age=age.toInt(),email=email,password = pass)
             if(QueryUser.registerUser(user,this)){
                 startActivity(Intent(this@LogInActivity,InicioActivity::class.java))
                 finish()
             }else
                 Toast.makeText(this,"Ha ocurrido un error", Toast.LENGTH_SHORT).show()
-
         }
-
     }
 
     private fun validarCampo(editText: TextInputEditText, txtLayout: TextInputLayout): Boolean {
-
         val empty=editText.text.toString().isEmpty()
-
         if(empty)
             txtLayout.error="Complete este campo"
         else
             txtLayout.error=null
         return empty
-
     }
 
     private fun validarEmail(email:String,layout:TextInputLayout):Boolean{
