@@ -7,16 +7,14 @@ import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import com.huawei.hms.push.HmsMessaging
 import com.huawei.hms.support.hwid.HuaweiIdAuthManager
 import com.huawei.hms.support.hwid.request.HuaweiIdAuthParams
 import com.huawei.hms.support.hwid.request.HuaweiIdAuthParamsHelper
@@ -27,8 +25,6 @@ import com.huaweikitsPrueba.kitshuawe.room.query.QueryUser
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     var permisoCamarKitScan:Int=1
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,8 +39,6 @@ class MainActivity : AppCompatActivity() {
         GetTokenAction().getToken(this) {
             Log.d("Token Push", it)
         }
-
-
         binding.btnRegister.setOnClickListener {
             val intent = Intent(this, LogInActivity::class.java)
             startActivity(intent)
@@ -99,7 +93,7 @@ class MainActivity : AppCompatActivity() {
 
         when{
             ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)==PackageManager.PERMISSION_GRANTED->{
-                tomarFoto()
+                //tomarFoto()
             }
             shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)->{
                 Toast.makeText(this, "Debes dar permiso para la camara", Toast.LENGTH_SHORT).show()
@@ -110,11 +104,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray){
         when(requestCode){
             permisoCamarKitScan->{
                 if (grantResults.isNotEmpty() && grantResults[0]==PackageManager.PERMISSION_GRANTED){
@@ -125,11 +115,6 @@ class MainActivity : AppCompatActivity() {
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults)
             }
         }
-
-
-    }
-    private fun tomarFoto(){
-
     }
 
     private fun loginHuawei() {
@@ -145,9 +130,6 @@ class MainActivity : AppCompatActivity() {
         var myAuthManager = HuaweiIdAuthManager.getService(this, myIdAuthParamsHelper)
         startActivityForResult(myAuthManager.signInIntent, 100)
     }
-
-
-
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -218,9 +200,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "El email o contraseña son incorrectos", Toast.LENGTH_SHORT)
                     .show()
         }
-
     }
-
 
     fun validarCampo(editText: TextInputEditText, textLayout: TextInputLayout): Boolean {
         val empty = editText.text.toString().isEmpty()
@@ -228,7 +208,6 @@ class MainActivity : AppCompatActivity() {
             textLayout.error = "Complete este campo"
         else
             textLayout.error = null
-
         return empty
     }
 

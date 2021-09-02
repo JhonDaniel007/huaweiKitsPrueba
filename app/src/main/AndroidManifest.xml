@@ -20,29 +20,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KitsHuaweiPrueba">
-        <activity android:name=".ScanKit">
-
-
-        </activity>
-
-        <activity android:name=".LogInActivity">
-
-        </activity>
-
+        <activity android:name=".interfaces.SplashActivity"></activity>
+        <activity android:name=".ScanKit"></activity>
+        <activity android:name=".LogInActivity"></activity>
         <activity
             android:name=".InicioActivity"
             android:label="@string/title_activity_inicio">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity"></activity>
 
         <meta-data
             android:name="com.huawei.hms.client.channel.androidMarket"
